@@ -1,0 +1,90 @@
+*{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.backGroundColor{
+    background-color: rgb(125, 176, 211);
+}
+
+.loginColor{
+    background-color: rgb(227, 227, 227);
+}
+
+.test{
+    color: aqua;
+}
+
+.my-border{
+    border: 2px solid black;
+    border-radius: 25px;
+}
+
+.topBarWidth{
+    width: 60%;
+}
+.tableWidth{
+    width: 60%;
+}
+
+.detailWidth{
+    width: 70%;
+}
+
+.notificationBox{
+    border: 1px solid black;
+    background-color: red;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    color: white;
+}
+
+.mapBox{
+    /* width: 300px; */
+    width: 45%;
+    height: 420px;
+}
+
+.detailsBox{
+    /* width: 300px; */
+    width: 45%;
+    height: 420px;
+}
+
+.accountWidth{
+    width: 50%;
+}
+
+.profilePic{
+    width: 450px;
+    height: 300px;
+    max-width: 100%; /* Limit the width to prevent overflow */
+    max-height: 100%; /* Limit the height to prevent overflow */
+    /* object-fit: contain; */
+}
+
+.halfWidth{
+    width: 50%;
+}
+
+/* .backGroundColor { */
+    /* background-color: #f0f0f0; Light grey background */
+    /* color: #333; Dark text color */
+/* } */
+
+/* .topBarWidth { */
+    /* width: 80%; Adjusting the top bar width */
+/* } */
+
+/* .notificationBox { */
+    /* background-color: #007bff; Blue notification box */
+    /* color: #fff; White text color */
+    /* width: 30px; Adjusting the width */
+    /* height: 30px; Adjusting the height */
+    /* border-radius: 50%; Circular shape */
+    /* text-align: center; Center aligning text */
+/* } */
+
+/* .tableWidth {
+    width: 80%; Adjusting the table width
+} */

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="backGroundColor">
+    <div class="container py-3">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-auto text-white">
+                <a href="/home" class="text-white">Home</a> |
+                <a href="/events/new" class="text-white">New</a> |
+                <a href="/search" class="text-white">Search</a>
+            </div>
+            <div class="col-auto">
+                <a href="/account" class="text-white">Account</a> |
+                <a href="/logout" class="text-white">Logout</a>
+                <!-- <div class="notification-box bg-primary text-light d-inline-flex justify-content-center align-items-center">
+                    12
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center my-5">
+            <div class="col-lg-6">
+                <form action="/search/sport" method="post" class="d-flex justify-content-between">
+                    <h5 class="mt-1 text-white">Search by:</h5>
+                    <select name="sport" id="sport" class="form-select">
+                        <option value="basketball">Basketball</option>
+                        <option value="soccer">Soccer</option>
+                        <option value="baseball">Baseball</option>
+                        <option value="volleyball">Volleyball</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Member</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Creator</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in range(events|length) %}
+                            <tr>
+                                <td><a href="/details/{{ events[i].id }}/{{ events[i].location }}">{{ events[i].name }}</a></td>
+                                <td>{{ events[i].location }}</td>
+                                <td>{{ count[i].attendee_count }}/{{ events[i].max_num_of_players }}</td>
+                                <td>{{ events[i].date }}</td>
+                                <td><a href="/account/{{ creators[i].creator.id }}">{{ creators[i].creator.first_name }}</a></td>
+                                {% if events[i].max_num_of_players == count[i].attendee_count %}
+                                    <td>Full</td>
+                                {% else %}
+                                    <td><a href="/attend/{{ events[i].id }}" class="btn btn-primary">Join</a></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

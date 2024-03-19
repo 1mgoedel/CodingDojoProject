@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login</title>
+    <!-- Bootstrap CSS                              Comment -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- style.css                                      Comment -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="backGroundColor">
+    <div class="container">
+        <div class="row text-light">
+            <h1 class="d-flex justify-content-center my-3">
+                iSport
+            </h1>
+            <h4 class="d-flex justify-content-center">
+                Free Pickup Game Finder and Organizer
+            </h4>
+            <div class=" d-flex justify-content-around">
+                <!-- Registration Form                                  Comment -->
+                <div class="card mb-4 col-5 my-border loginColor">
+                    <!-- Flash banner start                         Comment -->
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="d-flex justify-content-center text-light border-dark bg-danger">
+                                <p>
+                                    {{message}}
+                                </p>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <!-- Flash banner end                                Comment -->
+                    <div class="card-body">
+                        <h2 class="card-title mb-2">Register</h2>
+                        <form action="/validate/reg" method="post">
+                            <div class="mb-3">
+                                <label for="first_name" class="form-label">First Name</label>
+                                <input type="text" class="form-control my-border" id="first_name" name="first_name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="last_name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control my-border" id="last_name" name="last_name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control my-border" id="email" name="email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control my-border" id="password" name="password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirm_password" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control my-border" id="confirm_password" name="confirm_password">
+                            </div>
+                            <div class="mb-3">
+                                <label for="birthdate" class="form-label">Birthdate</label>
+                                <input type="date" class="form-control my-border" id="birthdate" name="birthdate">
+                            </div>
+                            <input type="submit" class="btn btn-primary my-border" value="Register">
+                        </form>
+                    </div>
+                </div>
+                <!-- Login Form                                     Comment -->
+                <div class="card col-5 my-border loginColor">
+                    <!-- Flash banner start                         Comment -->
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="d-flex justify-content-center text-light border-dark bg-danger">
+                                    <p>{{message}}</p>  
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <!-- Flsh banner end                            Comment -->
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">Login</h2>
+                        <form action="/validate/login" method="post">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control my-border" id="email" name="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control my-border" id="password" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary my-border">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
