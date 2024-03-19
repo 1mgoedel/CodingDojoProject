@@ -8,16 +8,17 @@ from werkzeug.utils import secure_filename
 from flask import send_from_directory
 import os
 
-UPLOAD_FOLDER = '/Users/michaelgoedel/Desktop/codingDojo/P&A/soloProject/iSport/UPLOAD_FOLDER'
+UPLOAD_FOLDER = '/Users/michaelgoedel/Desktop/codingDojo/P&A/soloProject/iSport/flask_app/static/uploads/UPLOAD_FOLDER'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    # print("\nin the upload route\n")
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
@@ -28,13 +29,15 @@ def upload_file():
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        return redirect(url_for('uploaded_file', filename=filename))
+        flash('File uploaded successfully')
+        return redirect(url_for('account'))
     else:
         flash('Invalid file type')
         return redirect(request.url)
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
+    # print("\nin the /uploads/<filename> route\n")
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 @app.route('/')
@@ -96,18 +99,10 @@ def account():
 def user_account(id):
     events = Event.get_all_events_for_user(id)
     user = User.get_all_user_info(id)
-    # return render_template('account.html', events=events, user=user[0])
 
-    if request.method == 'POST':
-        if 'file' in request.files:
-            file = request.files['file']
-            if file.filename != '':
-                # Save the file to a location on your server
-                file.save('path/to/save/directory/filename.jpg')
-                # Update the src attribute of the img tag
-                img_src = 'path/to/save/directory/filename.jpg'  # Update this with the actual path
-                return render_template('account.html', img_src=img_src, events=events, user=user[0])
-    return render_template('account.html', events=events, user=user[0])
+    img_filename = 'Headshot.jpeg'  # Replace this with the actual filename
+    img_path = url_for('static', filename=f'uploads/{img_filename}')
+    return render_template('account.html', events=events, user=user[0], img_src=img_path)
 
 @app.route('/logout')
 def clear():
