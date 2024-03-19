@@ -56,9 +56,10 @@
                             {%endfor%}
                         </div>
                     </div>
-                    <div class="col-md-4 bg-white rounded p-3 mb-3 my-border">
+                    <div class="col-md-5 bg-white rounded p-3 mb-3 my-border">
                         <div class="text-center profilePicContainer">
-                            <img class="profilePic my-border" src="{{img_src}}" alt="Profile Picture">
+                            <img class="profilePic my-border" src="{{ url_for('static', filename='uploads/Headshot.jpeg') }}" alt="Profile Picture">
+                            <!-- <img class="profilePic my-border" src="{{img_src}}" alt="Profile Picture"> -->
                         </div>
                         {%if session['id'] == user.id%}
                         <div class="text-center mt-3">
