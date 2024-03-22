@@ -10,6 +10,11 @@ gmaps = googlemaps.Client(key='AIzaSyC-3LQbnNmdFEoIt3nKfUFoOrB5REZhFXo')
 def new_sighting():
     return render_template('newEvent.html')
 
+@app.route('/delete/event/<int:id>')
+def delete_event(id):
+    Event.delete_event_id(id)
+    return redirect('/home')
+
 @app.route('/message/<int:user_id>/<int:event_id>/<location>', methods=['POST'])
 def new_message(user_id, event_id, location):
     print("\ngot here\n")

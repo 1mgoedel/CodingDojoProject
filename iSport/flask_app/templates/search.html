@@ -15,7 +15,7 @@
                 <a href="/events/new" class="text-white">New</a> |
                 <a href="/search" class="text-white">Search</a>
             </div>
-            <div class="col-auto">
+            <div class="col-auto text-white">
                 <a href="/account" class="text-white">Account</a> |
                 <a href="/logout" class="text-white">Logout</a>
                 <!-- <div class="notification-box bg-primary text-light d-inline-flex justify-content-center align-items-center">
@@ -29,7 +29,7 @@
             <div class="col-lg-6">
                 <form action="/search/sport" method="post" class="d-flex justify-content-between">
                     <h5 class="mt-1 text-white">Search by:</h5>
-                    <select name="sport" id="sport" class="form-select">
+                    <select name="sport" id="sport" class="form-select shadow">
                         <option value="basketball">Basketball</option>
                         <option value="soccer">Soccer</option>
                         <option value="baseball">Baseball</option>
@@ -41,7 +41,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped shadow">
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">Event Name</th>
@@ -63,7 +63,7 @@
                                 {% if events[i].max_num_of_players == count[i].attendee_count %}
                                     <td>Full</td>
                                 {% else %}
-                                    <td><a href="/attend/{{ events[i].id }}" class="btn btn-primary">Join</a></td>
+                                    <td><a href="/attend/{{ events[i].id }}" class="btn btn-primary shadow">Join</a></td>
                                 {% endif %}
                             </tr>
                         {% endfor %}
