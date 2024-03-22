@@ -25,7 +25,7 @@
                     {% with messages = get_flashed_messages() %}
                         {% if messages %}
                             {% for message in messages %}
-                            <div class="d-flex justify-content-center text-light border-dark bg-danger">
+                            <div class="d-flex justify-content-center text-light border-dark bg-danger my-border">
                                 <p>
                                     {{message}}
                                 </p>
@@ -71,7 +71,7 @@
                     {% with messages = get_flashed_messages() %}
                         {% if messages %}
                             {% for message in messages %}
-                                <div class="d-flex justify-content-center text-light border-dark bg-danger">
+                                <div class="d-flex justify-content-center text-light border-dark bg-danger my-border">
                                     <p>{{message}}</p>  
                                 </div>
                             {% endfor %}

@@ -28,7 +28,7 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-8">
                 <div class="row justify-content-between">
-                    <div class="col-md-6 bg-white rounded p-3 mb-3 my-border">
+                    <div class="col-md-6 bg-white rounded p-3 mb-3 my-border shadow">
                         <div class="">
                             <p>
                                 Name: {{user['first_name']}} {{user['last_name']}}
@@ -42,7 +42,7 @@
                         </div>
                         <div class="my-5">
                             {%if session['id'] == user.id%}
-                            <a class="btn btn-primary my-border" href="#">Edit</a>
+                            <a class="btn btn-primary my-border" href="#">Edit (not implemented)</a>
                             {%endif%}
                         </div>
                         <div>
@@ -56,19 +56,16 @@
                             {%endfor%}
                         </div>
                     </div>
-                    <div class="col-md-5 bg-white rounded p-3 mb-3 my-border">
+                    <div class="col-md-5 bg-white rounded p-3 mb-3 my-border shadow">
                         <div class="text-center profilePicContainer">
                             <img class="profilePic my-border" src="{{ url_for('static', filename='uploads/Headshot.jpeg') }}" alt="Profile Picture">
                             <!-- <img class="profilePic my-border" src="{{img_src}}" alt="Profile Picture"> -->
                         </div>
                         {%if session['id'] == user.id%}
                         <div class="text-center mt-3">
-                            <!-- <button class="btn btn-success my-border">
-                                Upload
-                            </button> -->
                             <form action="/upload" method="post" enctype="multipart/form-data">
                                 <input type="file" name="file" id="file">
-                                <button type="submit" class="btn btn-success my-border">Upload</button>
+                                <button type="submit" class="btn btn-success my-border">Upload (not quite working)</button>
                             </form>
                         </div>
                         {%endif%}

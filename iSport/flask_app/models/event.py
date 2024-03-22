@@ -29,6 +29,16 @@ class Event:
         return result
     
     @classmethod
+    def delete_event_id(cls, id):
+        query1 = f"DELETE FROM atendees WHERE event_id = {id};"
+        print(connectToMySQL(cls.DB).query_db(query1))
+        query2 = f"DELETE FROM messages WHERE event_id = {id};"
+        connectToMySQL(cls.DB).query_db(query2)
+        query3 = f"DELETE FROM events WHERE id = {id};"
+        connectToMySQL(cls.DB).query_db(query3)
+        return
+    
+    @classmethod
     def update_event(cls, data, id):
         event_data = {
             "name": data['name'],
@@ -140,7 +150,8 @@ class Event:
         query = f"""SELECT messages.*, users.first_name AS name
                     FROM messages
                     JOIN users ON messages.user_id = users.id
-                    WHERE event_id = {event_id};"""
+                    WHERE event_id = {event_id}
+                    ORDER BY id;"""
         return connectToMySQL(cls.DB).query_db(query)
 
     @classmethod
